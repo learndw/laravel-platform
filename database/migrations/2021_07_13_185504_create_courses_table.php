@@ -16,11 +16,6 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('subtitle');
-            $table->text('description');
-            $table->enum('status',[Course::BORRADOR,Course::REVISION,Course::PUBLICADO])->default(Course::BORRADOR);
-            $table->string('slug');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
@@ -32,7 +27,12 @@ class CreateCoursesTable extends Migration
 
             $table->unsignedBigInteger('price_id')->nullable();
             $table->foreign('price_id')->references('id')->on('prices')->onDelete('set null');
-
+            
+            $table->string('title');
+            $table->string('subtitle');
+            $table->text('description');
+            $table->enum('status',[Course::BORRADOR,Course::REVISION,Course::PUBLICADO])->default(Course::BORRADOR);
+            $table->string('slug');
             $table->timestamps();
         });
     }

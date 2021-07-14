@@ -19,8 +19,8 @@ class CreateLessonsTable extends Migration
             $table->unsignedBigInteger('platform_id')->nullable();
             $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('set null');
 
-            $table->unsignedBigInteger('lesson_id')->nullable();
-            $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
+            $table->unsignedBigInteger('section_id')->nullable();
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
 
             $table->string('name');
